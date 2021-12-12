@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<h1>Task #2</h1>
+<h3>
+  
+  When the user clicks the rendered Link, then instead of actually downloading the video, the video just opens in a
+  new tab, without starting the download.
+  Why does it happen? How could it be resolved?
+
+  <br />
+  <h1>Answer</h1>
+  <h3>
+    The same-origin policy is a critical security mechanism that restricts how a document or script loaded by one origin
+     can interact with a resource from another origin.
+
+It helps isolate potentially malicious documents, reducing possible attack vectors. 
+For example, it prevents a malicious website on the Internet from running JS in a browser to read data from a third-party webmail service 
+(which the user is signed into) or a company intranet (which is protected from direct access by the attacker by not having a public IP address) 
+and relaying that data to the attacker.<br />
+According to my research the easiest way i found using a simple javascript function that allows the download to happen, but i could also use bootstrap or other libraries that we could solve the problem in just one line of code, i would also have some workaround using blob
+The Blob object represents a blob, which is a file-like object of immutable, raw data; they can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data.
+
+  </h3>
+
+</h3>
+<h1>HTML Download Tag Test</h1>
+<button onclick="downloadButton()"class="btn">Download</button>
+  <script>
+function downloadButton() {
+  var content = "https://a-video-company.s3.amazonaws.com/origin/a_video.mp4";
+   var myVideo = document.createElement('a');
+   myVideo.setAttribute('href', 'data:video/mp4;charset=utf-8,' + encodeURIComponent(content));
+   myVideo.setAttribute('download', 'myVideo.mp4');
+   myVideo.click();
+};
+  </script>
+  <style>
+
+    body{
+      
+      background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h3 {      
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 auto;
+      text-align: center;
+      
+    }
+    span{
+      color: blue;
+      font-weight: bold;
+    }
+    .btn{
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 20rem;
+    }
+  </style>
+</body>
+</html>
